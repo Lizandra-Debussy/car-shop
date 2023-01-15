@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+// import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
 import AbstractODM from './AbstractODM';
 
@@ -15,6 +16,15 @@ class CarModel extends AbstractODM<ICar> {
     });
     super(schema, 'cars');
   }
+
+  // async findAll(): Promise<ICar[]> {
+  //   return this.model.find();
+  // }
+
+  // async findById(id: string): Promise<ICar | null> {
+  //   // if (!isValidObjectId(id)) throw new Error('Invalid mongo id');
+  //   return this.model.findOne({ id });
+  // }
 }
 
 export default CarModel;
