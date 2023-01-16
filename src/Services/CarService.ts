@@ -16,14 +16,14 @@ class CarService {
     return this.createCarDomain(newRegister);
   }
 
-  async getAllCar() {
+  async getAllCars() {
     const listCars = await this.carModel.findAll();
     const listCarsArray = listCars.map((list) => this.createCarDomain(list));
     return listCarsArray;
   }
 
-  async findCarById(id: string) {
-    const findCar = await this.carModel.findById(id);
+  async findCarById(id: string) {    
+    const findCar = await this.carModel.findById(id);    
     return this.createCarDomain(findCar);
   }
 }

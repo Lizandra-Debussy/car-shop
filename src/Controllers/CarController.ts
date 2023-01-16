@@ -33,9 +33,9 @@ class CarController {
     } catch (error) { this.next(error); }
   }
 
-  async getAllCar() {
+  async getAllCars() {
     try {
-      const listAllCars = await this.service.getAllCar();
+      const listAllCars = await this.service.getAllCars();
       return this.res.status(200).json(listAllCars);
     } catch (error) { this.next(error); }
   }
