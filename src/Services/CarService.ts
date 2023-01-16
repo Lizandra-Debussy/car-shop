@@ -26,6 +26,11 @@ class CarService {
     const findCar = await this.carModel.findById(id);    
     return this.createCarDomain(findCar);
   }
+
+  async updateCar(id: string, obj: ICar) {
+    const update = await this.carModel.update(id, obj);
+    return this.createCarDomain(update);
+  }
 }
 
 export default CarService;
