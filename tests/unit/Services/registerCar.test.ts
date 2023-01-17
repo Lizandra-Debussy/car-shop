@@ -2,10 +2,11 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
 import CarService from '../../../src/Services/CarService';
+import ICar from '../../../src/Interfaces/ICar';
 
 describe('Testes com a função registerCar', function () {
   it('Se é possível cadastrar um carro', async function () {
-    const input = {
+    const input: ICar = {
       model: 'Marea',
       year: 2002,
       color: 'Black',
