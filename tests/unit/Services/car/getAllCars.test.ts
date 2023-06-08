@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
-import CarService from '../../../src/Services/CarService';
+import CarService from '../../../../src/Services/CarService';
 
 describe('Testes com a função getAllCar', function () {
   it('Se é possível listar todos os carros', async function () {
@@ -34,5 +34,7 @@ describe('Testes com a função getAllCar', function () {
     const result = await service.getAllCars();
 
     expect(result).to.be.deep.equal(output);
+
+    sinon.restore();
   });
 });

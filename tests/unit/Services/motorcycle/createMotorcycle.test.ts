@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
-import MotorcycleService from '../../../src/Services/MotorcycleService';
-import IMotorcycle from '../../../src/Interfaces/IMotorcycle';
+import MotorcycleService from '../../../../src/Services/MotorcycleService';
+import IMotorcycle from '../../../../src/Interfaces/IMotorcycle';
 
 describe('Testes com a função createMotorcycle', function () {
   it('Se é possível cadastrar uma moto', async function () {

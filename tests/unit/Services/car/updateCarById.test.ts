@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
-import CarService from '../../../src/Services/CarService';
-import ICar from '../../../src/Interfaces/ICar';
+import CarService from '../../../../src/Services/CarService';
+import ICar from '../../../../src/Interfaces/ICar';
 
 describe('Testes com a função updateCarById', function () {
   it('Se é possível atualizar os dados de um carro', async function () {
@@ -33,5 +33,7 @@ describe('Testes com a função updateCarById', function () {
     const result = await service.updateCar(inputId, inputBody);
 
     expect(result).to.be.deep.equal(output);
+
+    sinon.restore();
   });
 });
