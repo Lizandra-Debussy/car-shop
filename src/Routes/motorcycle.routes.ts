@@ -15,4 +15,7 @@ routes.post('/', (req, res, next) =>
 routes.put('/:id', (req, res, next) =>
   new MotorcycleController(req, res, next).updateMotorcycleById());
 
+routes.delete('/:id', (req, res, next) => 
+  new MotorcycleController(req, res, next).removeMotorcycleById());
+
 export default routes;

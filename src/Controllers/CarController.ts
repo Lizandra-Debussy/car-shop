@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-// import ICar from '../Interfaces/ICar';
 import CarService from '../Services/CarService';
+
+const CAR_NOT_FOUND = 'Car not found';
+const INVALID_ID = 'Invalid mongo id';
 
 class CarController {
   private req: Request;
@@ -17,15 +19,6 @@ class CarController {
 
   async create() {
     const { body } = this.req;
-    // const car: ICar = {
-    //   model: this.req.body.model,
-    //   year: this.req.body.year,
-    //   color: this.req.body.color,
-    //   status: this.req.body.status,
-    //   buyValue: this.req.body.buyValue,
-    //   doorsQty: this.req.body.doorsQty,
-    //   seatsQty: this.req.body.seatsQty,
-    // };
 
     try {
       const newCar = await this.service.registerCar(body);
@@ -45,11 +38,11 @@ class CarController {
     try {
       const getCar = await this.service.findCarById(id);
 
-      if (!getCar) return this.res.status(404).json({ message: 'Car not found' });
+      if (!getCar) return this.res.status(404).json({ message: CAR_NOT_FOUND });
       
       return this.res.status(200).json(getCar);
     } catch (error) {
-      return this.res.status(422).json({ message: 'Invalid mongo id' });
+      return this.res.status(422).json({ message: INVALID_ID });
     }
   }
 
@@ -60,11 +53,24 @@ class CarController {
     try {
       const updateCar = await this.service.updateCar(id, body);
 
-      if (!updateCar) return this.res.status(404).json({ message: 'Car not found' });
+      if (!updateCar) return this.res.status(404).json({ message: CAR_NOT_FOUND });
 
       return this.res.status(200).json(updateCar);
     } catch (error) {
-      return this.res.status(422).json({ message: 'Invalid mongo id' });
+      return this.res.status(422).json({ message: INVALID_ID });
+    }
+  }
+
+  async removeCarById() {
+    const { id } = this.req.params;
+    try {
+      const removeCar = await this.service.deleteCarById(id);    
+
+      if (!removeCar) return this.res.status(404).json({ message: CAR_NOT_FOUND });
+      
+      return this.res.status(204).end();
+    } catch (error) {
+      return this.res.status(422).json({ message: INVALID_ID });
     }
   }
 }

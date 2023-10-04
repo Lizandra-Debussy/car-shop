@@ -40,6 +40,10 @@ abstract class AbstractODM<T> {
       { new: true },
     );
   }
+
+  public async remove(_id: string): Promise<T | null> {
+    return this.model.findByIdAndRemove({ _id });
+  }
 }
 
 export default AbstractODM;

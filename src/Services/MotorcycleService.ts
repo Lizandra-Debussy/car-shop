@@ -31,6 +31,11 @@ class MotorcycleService {
     const update = await this.motorcycleModel.update(id, obj);
     return this.createMotorcycleDomain(update);
   }
+
+  async deleteMotorcycleById(id: string) {
+    const remove = await this.motorcycleModel.remove(id);
+    return this.createMotorcycleDomain(remove);
+  }
 }
 
 export default MotorcycleService;
